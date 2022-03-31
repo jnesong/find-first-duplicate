@@ -11,7 +11,24 @@
 //  return -1
 // }
 
+//I : array
+//O : either -1 or the first dupe
+//C: only return the first dupe, not a later dupe, if no dupes return -1
+//E: empty array, return -1
+//Time complexity: O(n)
+// Space complexity: O(n)
+
 function findFirstDuplicate(arr) {
+  let map = {}
+  for (let i=0 ; i < arr.length ; i++){
+    if (map[arr[i]]) {
+      return arr[i]
+    } else {
+      map[arr[i]] = 1
+    }
+  }
+
+  return -1
 
 }
 
@@ -30,6 +47,11 @@ if (require.main === module) {
 
   console.log("Expecting: -1");
   console.log("=>", findFirstDuplicate([1, 2, 3, 4]));
+
+  console.log("");
+
+  console.log("Expecting: -1");
+  console.log("=>", findFirstDuplicate([]));
 }
 
 module.exports = findFirstDuplicate;
